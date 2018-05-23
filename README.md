@@ -2,7 +2,7 @@
   <img src="https://cloud.githubusercontent.com/assets/2059754/24601246/753a7f36-1858-11e7-9d6b-7a0e64fb27f7.png" alt="bash logo"/>
 </p>
 
-> fork 自 [Idnan/bash-guide](https://github.com/Idnan/bash-guide)，由 [raoyc](https://raoyc.com) 翻译为简体中文版，仅供参考学习使用，不可商用。
+> Fork 自 [Idnan/bash-guide](https://github.com/Idnan/bash-guide)，由 [raoyc](https://raoyc.com) 翻译为简体中文版，仅供参考学习使用，不可商用。
 
 ## 目录
   1. [基本操作](#1-基本操作)  
@@ -56,7 +56,7 @@ whereis 通过系统自动建立的索引库来检索可执行程序、源代码
 ```bash
 whereis name
 ```
-Example:
+示例:
 ```bash
 $ whereis php
 /usr/bin/php
