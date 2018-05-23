@@ -5,9 +5,9 @@
 > fork 自 [Idnan/bash-guide](https://github.com/Idnan/bash-guide)，由 [raoyc](https://raoyc.com) 翻译为简体中文版，仅供参考学习使用，不可商用。
 
 ## 目录
-  1. [基本操作](#1-basic-operations)  
-    1.1. [文件操作](#11-file-operations)  
-    1.2. [文本操作](#12-text-operations)  
+  1. [基本操作](#1-基本操作)  
+    1.1. [文件操作](#11-文件操作)  
+    1.2. [文本操作](#12-文本操作)  
     1.3. [Directory Operations](#13-directory-operations)  
     1.4. [SSH, System Info & Network Operations](#14-ssh-system-info--network-operations)  
     1.5. [Process Monitoring Operations (TODO)](#15-process-monitoring-operations)
@@ -41,7 +41,7 @@ $ echo $AWS_HOME
 ```
 
 ### b. `whatis`
-whatis 显示用户命令、系统调用、类库功能等在手册中描述。
+whatis 显示用户命令、系统调用、类库功能等在手册中描述。  
 ```bash
 whatis something
 ```
@@ -52,7 +52,7 @@ bash (1)             - GNU Bourne-Again SHell
 ```
 
 ### c. `whereis`
-whereis 通过系统自动建立的索引库来检索可执行程序、源代码文件以及手册页面。
+whereis 通过系统自动建立的索引库来检索可执行程序、源代码文件以及手册页面。  
 ```bash
 whereis name
 ```
@@ -63,7 +63,7 @@ $ whereis php
 ```
 
 ### d. `which`
-which 检索环境变量 `PATH` 所限定目录下的可执行文件。此命令会打印可执行文件完整路径。
+which 检索环境变量 `PATH` 所限定目录下的可执行文件。此命令会打印可执行文件完整路径。  
 ```bash
 which program_name 
 ```
@@ -116,75 +116,75 @@ cat file1 file2 > newcombinedfile
 ```
 
 ### b. `chmod`
-Lets you change the read, write, and execute permissions on your files.  
+允许你改变文件读、写和可执行等权限。  
 ```bash
 chmod -options filename
 ```
 
 ### c. `cp`
-Copies a file from one location to other.  
+把文件从一个位置复制到另一个位置。  
 ```bash
 cp filename1 filename2
 ```
-Where `filename1` is the source path to the file and `filename2` is the destination path to the file.
+这里的 `filename1` 是原始文件路径，`filename2` 是目标文件路径。
 
 ### d. `diff`
-Compares files, and lists their differences.  
+比较文件并列出他们的不同。  
 ```bash
 diff filename1 filename2
 ```
 
 ### e. `file`
-Determine file type.  
+侦测文件类型。  
 ```bash
 file filename
 ```
-Example:
+示例:
 ```bash
 $ file index.html
  index.html: HTML document, ASCII text
 ```
 ### f. `find`
-Find files in directory
+在特定目录下查找文件。  
 ```bash
 find directory options pattern
 ```
-Example:
+示例:
 ```bash
 $ find . -name README.md
 $ find /home/user1 -name '*.png'
 ```
 
 ### g. `gunzip`
-Un-compresses files compressed by gzip.  
+解压缩由 gzip 压缩过的文件。  
 ```bash
 gunzip filename
 ```
 
 ### h. `gzcat`
-Lets you look at gzipped file without actually having to gunzip it.  
+可让你免解压直接查看经 `gzip` 压缩过的文件。  
 ```bash
 gzcat filename
 ```
 
 ### i. `gzip`
-Compresses files.  
+压缩文件。  
 ```bash
 gzip filename
 ```
 
 ### j. `head`
-Outputs the first 10 lines of file  
+输出文件前10行内容。  
 ```bash
 head filename
 ```
 
 ### k. `lpq`
-Check out the printer queue.  
+查看打印队列状态。  
 ```bash
 lpq
 ```
-Example:
+示例:
 ```bash
 $ lpq
 Rank    Owner   Job     File(s)                         Total Size
@@ -193,23 +193,23 @@ active  adnanad 59      demo                            399360 bytes
 ```
 
 ### l. `lpr`
-Print the file.  
+打印文件。  
 ```bash
 lpr filename
 ```
 
 ### m. `lprm`
-Remove something from the printer queue.  
+从打印队列中移除某个任务。  
 ```bash
 lprm jobnumber
 ```
 
 ### n. `ls`
-Lists your files. `ls` has many options: `-l` lists files in 'long format', which contains the exact size of the file, who owns the file, who has the right to look at it, and when it was last modified. `-a` lists all files, including hidden files. For more information on this command check this [link](https://ss64.com/bash/ls.html).  
+列出文件。 `ls` 拥有诸多选项： `-l` 以列表方式列出文件 （包含文件大小，文件所属用户组，文件权限及其最后更新时间等）； `-a` 列出所有文件，包括隐藏文件。关于这个命令的更多信息请查阅此 [外链](https://ss64.com/bash/ls.html) 。  
 ```bash
 ls option
 ```
-Example:
+示例:
 <pre>
 $ ls -la
 rwxr-xr-x   33 adnan  staff    1122 Mar 27 18:44 .
@@ -223,48 +223,48 @@ drwxr-xr-x  17 adnan  staff     578 Mar 27 23:36 .git
 </pre>
 
 ### o. `more`
-Shows the first part of a file (move with space and type q to quit).  
+展示文件的开头部分（通过敲击空格键移动以及 `q` 键退出）。  
 ```bash
 more filename
 ```
 
 ### p. `mv`
-Moves a file from one location to other.  
+将文件从一个位置移动到另一个位置。  
 ```bash
 mv filename1 filename2
 ```
-Where `filename1` is the source path to the file and `filename2` is the destination path to the file.
+这里的 `filename1` 是原始文件路径，`filename2` 是目标文件路径。
 
-Also it can be used for rename a file.
+此外它也可用于重命名一个文件。  
 ```bash
 mv old_name new_name
 ```
 
 ### q. `rm`
-Removes a file. Using this command on a directory gives you an error.
+移除某个文件。对一个目录使用此命令会爆出一个错误。
 `rm: directory: is a directory`
-To remove a directory you have to pass `-r` which will remove the content of the directory recursively. Optionally you can use `-f` flag to force the deletion i.e. without any confirmations etc.
+要删除一个目录，请传入 `-r` 参数，它将递归性删除该目录下所有内容。可选地你也使用 `-f` 标志位强制删除，也就是不经过任何确定提示等。  
 ```bash
 rm filename
 ```
 
 ### r. `tail`
-Outputs the last 10 lines of file. Use `-f` to output appended data as the file grows.  
+输出文件末尾10行内容。使用 `-f` 选项可输出正在写入的文件被追加内容。  
 ```bash
 tail filename
 ```
 
 ### s. `touch`
-Creates or updates your file.  
+创建或更新你的文件。  
 ```bash
 touch filename
 ```
-Example:
+示例:
 ```bash
 $ touch trick.md
 ```
 
-## 1.2. Text Operations
+## 1.2. 文本操作
 
 <table>
     <tr>
