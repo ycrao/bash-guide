@@ -2,12 +2,10 @@
   <img src="https://cloud.githubusercontent.com/assets/2059754/24601246/753a7f36-1858-11e7-9d6b-7a0e64fb27f7.png" alt="bash logo"/>
 </p>
 
-> fork 自 [Idnan/bash-guide](https://github.com/Idnan/bash-guide)，由 [raoyc](https://raoyc.com) 翻译为简体中文版，仅供参考学习使用，不可商用。
-
-## 目录
-  1. [基本操作](#1-basic-operations)  
-    1.1. [文件操作](#11-file-operations)  
-    1.2. [文本操作](#12-text-operations)  
+## Table of Contents
+  1. [Basic Operations](#1-basic-operations)  
+    1.1. [File Operations](#11-file-operations)  
+    1.2. [Text Operations](#12-text-operations)  
     1.3. [Directory Operations](#13-directory-operations)  
     1.4. [SSH, System Info & Network Operations](#14-ssh-system-info--network-operations)  
     1.5. [Process Monitoring Operations (TODO)](#15-process-monitoring-operations)
@@ -21,14 +19,14 @@
   4. [Debugging](#4-debugging)  
   
 
-# 1. 基本操作
+# 1. Basic Operations
 
 ### a. `export`
-显示所有环境变量。如果你想获取某个特定（环境）变量详情值，请使用 `echo $VARIABLE_NAME` 。  
+Displays all environment variables. If you want to get details of a specific variable, use `echo $VARIABLE_NAME`.  
 ```bash
 export
 ```
-示例:
+Example:
 ```bash
 $ export
 AWS_HOME=/Users/adnanadnan/.aws
@@ -41,18 +39,18 @@ $ echo $AWS_HOME
 ```
 
 ### b. `whatis`
-whatis 显示用户命令、系统调用、类库功能等在手册中描述。
+whatis shows description for user commands, system calls, library functions, and others in manual pages
 ```bash
 whatis something
 ```
-示例:
+Example:
 ```bash
 $ whatis bash
 bash (1)             - GNU Bourne-Again SHell
 ```
 
 ### c. `whereis`
-whereis 通过系统自动建立的索引库来检索可执行程序、源代码文件以及手册页面。
+whereis searches for executables, source files, and manual pages using a database built by system automatically.
 ```bash
 whereis name
 ```
@@ -63,20 +61,20 @@ $ whereis php
 ```
 
 ### d. `which`
-which 检索环境变量 `PATH` 所限定目录下的可执行文件。此命令会打印可执行文件完整路径。
+which searches for executables in the directories specified by the environment variable PATH. This command will print the full path of the executable(s).
 ```bash
 which program_name 
 ```
-示例:
+Example:
 ```bash
 $ which php
 /c/xampp/php/php
 ```
 
 ### e. clear
-清除终端窗体所有内容。
+Clears content on window.
 
-## 1.1. 文件操作
+## 1.1. File Operations
 <table>
    <tr>
       <td><a href="#a-cat">cat</a></td>
@@ -104,11 +102,11 @@ $ which php
 </table>
 
 ### a. `cat`
-在 UNIX 或 Linux 下，它可以用于以下场景：  
-* 在屏幕上显示文本文件
-* 复制文本文件
-* 合并文本文件
-* 创建新的文本文件
+It can be used for the following purposes under UNIX or Linux.  
+* Display text files on screen
+* Copy text files  
+* Combine text files  
+* Create new text files  
 ```bash
 cat filename
 cat file1 file2 
