@@ -8,7 +8,7 @@
   1. [基本操作](#1-基本操作)  
     1.1. [文件操作](#11-文件操作)  
     1.2. [文本操作](#12-文本操作)  
-    1.3. [Directory Operations](#13-directory-operations)  
+    1.3. [文件夹操作](#13-文件夹操作)  
     1.4. [SSH, System Info & Network Operations](#14-ssh-system-info--network-operations)  
     1.5. [Process Monitoring Operations (TODO)](#15-process-monitoring-operations)
   2. [Basic Shell Programming](#2-basic-shell-programming)  
@@ -249,7 +249,7 @@ rm filename
 ```
 
 ### r. `tail`
-输出文件末尾10行内容。使用 `-f` 选项可输出正在写入的文件被追加内容。  
+输出文件末尾10行内容。使用 `-f` 选项可输出正在被写入文件中的数据。  
 ```bash
 tail filename
 ```
@@ -353,7 +353,9 @@ World
 ```
 
 ### d. `egrep`
-Print lines matching a pattern - Extended Expression (alias for: 'grep -E')
+打印出文件中匹配模式的行 - 扩展表达式  (视为 'grep -E' 的别名)
+
+> 译者注：`egrep` 可以使用基本的正则表达外, 还可以用扩展表达式。
 
 *example.txt*
 ```bash
@@ -378,7 +380,7 @@ ipsum dolor sit
 amet.
 ```
 
-*display lines that have either "Lorem" or "dolor" in them.*
+*显示文件中包含 'Lorem' 或 'dolor' 的行*
 ```bash
 egrep '(Lorem|dolor)' example.txt
 or
@@ -394,7 +396,9 @@ ipsum dolor sit
 ```
 
 ### e. `fgrep`
-Print lines matching a pattern - FIXED pattern matching  (alias for: 'grep -F')
+打印出文件中匹配模式的行 - 固化模式匹配  (视为 'grep -F' 的别名)
+
+>   译者注：`fgrep` 指定的模式将不被认做正则表达式，而是确切的没有转义含义的字符串。
 
 *example.txt*
 ```bash
@@ -420,7 +424,7 @@ ipsum dolor sit
 amet.
 ```
 
-*Find the exact string '(Lorem|dolor)' in example.txt*
+*在 example.txt 文件中找到确切的 '(Lorem|dolor)' 字符串*
 ```bash
 fgrep '(Lorem|dolor)' example.txt
 or
@@ -431,14 +435,14 @@ foo (Lorem|dolor)
 ```
 
 ### f. `fmt`
-Simple optimal text formatter
+简单的文本格式化器。
 
-*example: example.txt (1 line)*
+*example: example.txt (1 行)*
 ```bash
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 ```
 
-*output the lines of example.txt to 20 character width*
+*将 example.txt 格式化输出为20字符行宽*
 ```bash
 cat example.txt | fmt -w 20
 ```
@@ -465,25 +469,25 @@ amet.
 ```
 
 ### g. `grep`
-Looks for text inside files. You can use grep to search for lines of text that match one or many regular expressions, and outputs only the matching lines.  
+在文件中查找文本。你可以使用 grep 命令去查找匹配一个或多个正则表达式的文本行，然后输出匹配的结果行。 
 ```bash
 grep pattern filename
 ```
-Example:
+示例：
 ```bash
 $ grep admin /etc/passwd
 _kadmin_admin:*:218:-2:Kerberos Admin Service:/var/empty:/usr/bin/false
 _kadmin_changepw:*:219:-2:Kerberos Change Password Service:/var/empty:/usr/bin/false
 _krb_kadmin:*:231:-2:Open Directory Kerberos Admin Service:/var/empty:/usr/bin/false
 ```
-You can also force grep to ignore word case by using `-i` option. `-r` can be used to search all files under the specified directory, for example:
+你也可以通过 `-i` 选项参数强制 grep 忽略大小写；`-r` 可被用来递归地查找指定目录下所有的文件。例如： 
 ```bash
 $ grep -r admin /etc/
 ```
-And `-w` to search for words only. For more detail on `grep`, check following [link](https://www.cyberciti.biz/faq/grep-in-bash).
+参数 `-w` 限定只查找单词。关于 `grep` 命令的更多帮助信息，请查阅此[外链](https://www.cyberciti.biz/faq/grep-in-bash)。
 
 ### h. `nl`
-Number lines of files
+（显示）文件行号。
 
 *example.txt*
 ```bash
@@ -508,7 +512,7 @@ ipsum dolor sit
 amet.
 ```
 
-*show example.txt with line numbers*
+*带行号显示 example.txt*
 ```bash
 nl -s". " example.txt 
 ```
@@ -559,7 +563,7 @@ Hello This is a Test d d d d
 ```
 
 ### j. `sort`
-Sort lines of text files
+对文件行进行排序。
 
 *example.txt*
 ```bash
@@ -572,7 +576,7 @@ e
 d
 ```
 
-*sort example.txt*
+*对 example.txt （译者注：按字母序）排序 *
 ```bash
 sort example.txt
 ```
@@ -586,7 +590,7 @@ f
 g
 ```
 
-*randomize a sorted example.txt*
+*对 example.txt 随机排序 *
 ```bash
 sort example.txt | sort -R
 ```
@@ -677,7 +681,7 @@ $ wc demo.txt
 ```
 Where `7459` is lines, `15915` is words and `398400` is characters.
 
-## 1.3. Directory Operations
+## 1.3. 文件夹操作
 
 <table>
    <tr>
@@ -688,23 +692,23 @@ Where `7459` is lines, `15915` is words and `398400` is characters.
 </table>
 
 ### a. `cd`
-Moves you from one directory to other. Running this  
+从一个目录跳转到另一个目录。执行下面命令会让你跳转到用户主目录。
 ```bash
 $ cd
 ```
-moves you to home directory. This command accepts an optional `dirname`, which moves you to that directory.
+此命令接受一个可选的 `dirname` 参数，执向你想进入到的目录。
 ```bash
 cd dirname
 ```
 
 ### b. `mkdir`
-Makes a new directory.  
+创建一个新的文件夹。  
 ```bash
 mkdir dirname
 ```
 
 ### c. `pwd`
-Tells you which directory you currently are in.  
+显示你当前所在目录的路径。
 ```bash
 pwd
 ```
@@ -1127,7 +1131,7 @@ echo export FOO=BAR >> ~/.bash_profile
 ```
 
 # 4. 调试
-通过传入不同的 bash 选项参数，您可很方便地调试脚本代码。例如：`-n` 将只检查语法而不执行命令；`-v` 会在执行之前输出命令；`-x` 将在命令处理后输出命令。
+通过传入不同的 bash 选项参数，你可很方便地调试脚本代码。例如：`-n` 将只检查语法而不执行命令；`-v` 会在执行之前输出命令；`-x` 将在命令处理后输出命令。
 
 ```bash
 bash -n scriptname
