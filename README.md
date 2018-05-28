@@ -1083,7 +1083,7 @@ done
 # 3. 技巧
 
 ## 设置别名
-使用下面命令 `nano ~/.bash_profile` （译者注：当然你也可使用 `vi/vim` 工具，前提您已经安装过该软件包）打开 `bash_profile`  
+使用下面命令 `nano ~/.bash_profile` （译者注：当然你也可使用 `vi/vim` 工具，前提你已经安装过该软件包）打开 `bash_profile`  
 > alias dockerlogin='ssh www-data@adnan.local -p2222'  # add your alias in .bash_profile
 
 ## 快速跳转到指定目录
@@ -1095,8 +1095,39 @@ source ~/.bashrc
 cd $hotellogs
 ```
 
+## 跳出陷阱
+
+通过可靠地执行清理代码使得你的脚本更加健壮。
+
+```bash
+function finish {
+  # 你的清理代码，如 杀死所有 forked 进程
+  jobs -p | xargs kill
+}
+trap finish EXIT
+```
+
+## 保存你的环境变量
+
+当你执行 `export FOO = BAR` 时，你的环境变量只在当前及其子 shell 中存在，想在将来持久化它，只需追加以下命令导出你的变量到 `~/.bash_profile` 文件。
+```bash
+echo export FOO=BAR >> ~/.bash_profile
+```
+
+## 访问你的脚本
+
+通过在你的用户主目录创建一个 bin 目录，即使用 `mkdir ~/bin` 命令，在此 bin 目录下的所有脚本都能在任何别的目录中快速访问到。 
+
+如果你无法访问，尝试追加以下代码到 `~/.bash_profile` 文件，随后执行 `source ~/.bash_profile` 命令。
+```bash
+    # 设置 PATH 如果用户私有 bin 目录存在，则包括进去
+    if [ -d "$HOME/bin" ] ; then
+        PATH="$HOME/bin:$PATH"
+    fi
+```
+
 # 4. 调试
-通过传入不同的 bash 选项参数，您可很方便地调试脚本代码。例如：`-n` 将只检查语法而不执行命令；`-v` 会在执行之前输出命令；`-x` 将在命令处理中输出命令。
+通过传入不同的 bash 选项参数，您可很方便地调试脚本代码。例如：`-n` 将只检查语法而不执行命令；`-v` 会在执行之前输出命令；`-x` 将在命令处理后输出命令。
 
 ```bash
 bash -n scriptname
