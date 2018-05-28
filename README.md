@@ -9,14 +9,15 @@
     1.1. [文件操作](#11-文件操作)  
     1.2. [文本操作](#12-文本操作)  
     1.3. [文件夹操作](#13-文件夹操作)  
-    1.4. [SSH, System Info & Network Operations](#14-ssh-system-info--network-operations)  
-    1.5. [Process Monitoring Operations (TODO)](#15-process-monitoring-operations)
-  2. [Basic Shell Programming](#2-basic-shell-programming)  
-    2.1. [Variables](#21-variables)  
-    2.3. [String Substitution](#22-string-substitution)  
-    2.4. [Functions](#23-functions)  
-    2.5. [Conditionals](#24-conditionals)  
-    2.6. [Loops](#25-loops)  
+    1.4. [SSH、系统信息及网络操作](#14-SSH、系统信息及网络操作)  
+    1.5. [进程监控操作](#15-进程监控操作)
+  2. [基础Shell编程](#2-基础Shell编程)  
+    2.1. [变量](#21-变量)  
+    2.2. [数组](#22-数组)
+    2.3. [字符串替换](#22-字符串替换)  
+    2.4. [函数Functions](#23-函数)  
+    2.5. [条件](#24-条件)  
+    2.6. [循环](#25-循环)  
   3. [技巧](#3-技巧)  
   4. [调试](#4-调试)  
   
@@ -713,7 +714,7 @@ mkdir dirname
 pwd
 ```
 
-## 1.4. SSH, System Info & Network Operations
+## 1.4. SSH、系统信息及网络操作
 
 <table>
    <tr>
@@ -893,7 +894,7 @@ Gets whois information for domain.
 whois domain
 ```
 
-# 2. Basic Shell Programming
+# 2. 基础 Shell 编程
 
 
 The first line that you will write in bash script files is called `shebang`. This line in any script determines the script's ability to be executed like a standalone executable without typing sh, bash, python, php etc beforehand in the terminal.
@@ -902,7 +903,7 @@ The first line that you will write in bash script files is called `shebang`. Thi
 #!/bin/bash
 ```
 
-## 2.1. Variables
+## 2.1. 变量
 
 Creating variables in bash is similar to other languages. There are no data types. A variable in bash can contain a number, a character, a string of characters, etc. You have no need to declare a variable, just assigning a value to its reference will create it.
 
@@ -949,7 +950,7 @@ ${varname:+word}    # if varname exists and isn't null, return word; otherwise r
 ${varname:offset:length}    # performs substring expansion. It returns the substring of $varname starting at offset and up to length characters
 ```
 
-## 2.2 String Substitution
+## 2.2 字符串替换
 
 Check some of the syntax on how to manipulate strings
 
@@ -963,7 +964,7 @@ ${variable//pattern/string} # the longest match to pattern in variable is replac
 ${#varname}     # returns the length of the value of the variable as a character string
 ```
 
-## 2.3. Functions
+## 2.3. 函数
 As in almost any programming language, you can use functions to group pieces of code in a more logical way or practice the divine art of recursion. Declaring a function is just a matter of writing function my_func { my_code }. Calling a function is just like calling another program, you just write its name.
 
 ```bash
@@ -988,7 +989,7 @@ say "hello world!"
 
 When you run the above example the `hello` function will output "world!". The above two functions `hello` and `say` are identical. The main difference is function `say`. This function, prints the first argument it receives. Arguments, within functions, are treated in the same manner as arguments given to the script.
 
-## 2.4. Conditionals
+## 2.4. 条件
 
 The conditional statement in bash is similar to other programming languages. Conditions have many form like the most basic form is `if` expression `then` statement where statement is only executed if expression is true.
 
@@ -1048,7 +1049,7 @@ file1 -ot file2     # file1 is older than file2
 -ne     # not equal
 ```
 
-## 2.5. Loops
+## 2.5. 循环
 
 There are three types of loops in bash. `for`, `while` and `until`.
 
