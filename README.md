@@ -1106,9 +1106,17 @@ bash -x scriptname
 
 ## 贡献
 
-- 报告问题
-- 提交改进后的 pull request with
+- 报告问题 [官方帮助](https://help.github.com/articles/creating-an-issue/)
+- 提交改进后的 pull request [官方帮助](https://help.github.com/articles/about-pull-requests/)
 - 宣传本文档
+
+## 翻译版本
+
+> 译者注：官方已列出早期他人贡献的中文翻译版本，译者本人的翻译[链接](https://github.com/ycrao/bash-guide)，只为加深理解，在翻译中，修正了部分表述错误的地方（有译注说明），他我二人（ `vuuihc` 与 我 `ycrao` ）在翻译表述也并不尽相同，请读者自行辨别取舍阅读。
+
+- [Chinese | 简体中文](https://github.com/vuuihc/bash-guide)
+- [Turkish | Türkçe](https://github.com/omergulen/bash-guide)
+- [Japanese | 日本語](https://github.com/itooww/bash-guide)
 
 ## 授权协议
 
