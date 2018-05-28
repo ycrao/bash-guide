@@ -696,7 +696,7 @@ Where `7459` is lines, `15915` is words and `398400` is characters.
 ```bash
 $ cd
 ```
-此命令接受一个可选的 `dirname` 参数，执向你想进入到的目录。
+此命令接受一个可选的 `dirname` 参数，指向你想进入到的目录。
 ```bash
 cd dirname
 ```
