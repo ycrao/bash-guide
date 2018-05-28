@@ -17,8 +17,8 @@
     2.4. [Functions](#23-functions)  
     2.5. [Conditionals](#24-conditionals)  
     2.6. [Loops](#25-loops)  
-  3. [Tricks](#3-tricks)  
-  4. [Debugging](#4-debugging)  
+  3. [技巧](#3-技巧)  
+  4. [调试](#4-调试)  
   
 
 # 1. 基本操作
@@ -287,13 +287,13 @@ $ touch trick.md
 </table>
 
 ### a. `awk`
-awk is the most useful command for handling text files. It operates on an entire file line by line. By default it uses whitespace to separate the fields. The most common syntax for awk command is
+awk 最佳的文本文件处理工具。它可以逐行处理整个文件。默认情况下，它使用空白符去切分为片段。awk 最常用的句法命令是：
 
 ```bash
 awk '/search_pattern/ { action_to_take_if_pattern_matches; }' file_to_parse
 ```
 
-Lets take following file `/etc/passwd`. Here's the sample data that this file contains:
+让我们来看看下面 `/etc/passwd` 文件。这里是此文件中包含的样本数据：  
 ```
 root:x:0:0:root:/root:/usr/bin/zsh
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
@@ -301,11 +301,11 @@ bin:x:2:2:bin:/bin:/usr/sbin/nologin
 sys:x:3:3:sys:/dev:/usr/sbin/nologin
 sync:x:4:65534:sync:/bin:/bin/sync
 ```
-So now lets get only username from this file. Where `-F` specifies that on which base we are going to separate the fields. In our case it's `:`. `{ print $1 }` means print out the first matching field.
+那么现在让我们从这个文件获取用户名。这里的 `-F` 指定我们想要字符串切分的分隔符，在本例中是 `:` 。 `{ print $1 }` 表示打印出第一个匹配到的字符片段。
 ```bash
 awk -F':' '{ print $1 }' /etc/passwd
 ```
-After running the above command you will get following output.
+执行完上述命令后，你将得到下面输出：
 ```
 root
 daemon
@@ -313,18 +313,18 @@ bin
 sys
 sync
 ```
-For more detail on how to use `awk`, check following [link](https://www.cyberciti.biz/faq/bash-scripting-using-awk).
+关于 `awk` 使用的更多信息请查阅此 [外链](https://www.cyberciti.biz/faq/bash-scripting-using-awk) 。
 
 
 ### b. `cut`
-Remove sections from each line of files
+移除文件每行某些节内容。
 
 *example.txt*
 ```bash
 red riding hood went to the park to play
 ```
 
-*show me columns 2 , 7 , and 9 with a space as a separator*
+*以空格符为分隔符，显示第2、7和9节*
 ```bash
 cut -d " " -f2,7,9 example.txt
 ```
@@ -333,9 +333,9 @@ riding park play
 ```
 
 ### c. `echo`
-Display a line of text
+输出一行文字。
 
-*display "Hello World"*
+*显示 "Hello World"*
 ```bash
 echo Hello World
 ```
@@ -343,7 +343,7 @@ echo Hello World
 Hello World
 ```
 
-*display "Hello World" with newlines between words*
+*单词间以新行方式显示 "Hello World"*
 ```bash
 echo -ne "Hello\nWorld\n"
 ```
@@ -1080,13 +1080,13 @@ until condition; do
 done
 ```
 
-# 3. Tricks
+# 3. 技巧
 
-## Set an alias
-Open `bash_profile` by running following command `nano ~/.bash_profile`
+## 设置别名
+使用下面命令 `nano ~/.bash_profile` （译者注：当然你也可使用 `vi/vim` 工具，前提您已经安装过该软件包）打开 `bash_profile`  
 > alias dockerlogin='ssh www-data@adnan.local -p2222'  # add your alias in .bash_profile
 
-## To quickly go to a specific directory
+## 快速跳转到指定目录
 nano ~/.bashrc
 > export hotellogs="/workspace/hotel-api/storage/logs"
 
@@ -1095,8 +1095,8 @@ source ~/.bashrc
 cd $hotellogs
 ```
 
-# 4. Debugging
-You can easily debug the bash script by passing different options to `bash` command. For example `-n` will not run commands and check for syntax errors only. `-v` echo commands before running them. `-x` echo commands after command-line processing.
+# 4. 调试
+通过传入不同的 bash 选项参数，您可很方便地调试脚本代码。例如：`-n` 将只检查语法而不执行命令；`-v` 会在执行之前输出命令；`-x` 将在命令处理中输出命令。
 
 ```bash
 bash -n scriptname
@@ -1104,12 +1104,12 @@ bash -v scriptname
 bash -x scriptname
 ```
 
-## Contribution
+## 贡献
 
-- Report issues
-- Open pull request with improvements
-- Spread the word
+- 报告问题
+- 提交改进后的 pull request with
+- 宣传本文档
 
-## License
+## 授权协议
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
