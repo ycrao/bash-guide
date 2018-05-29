@@ -540,7 +540,7 @@ nl -s". " example.txt
 ```
 
 ### i. `sed`
-Stream editor for filtering and transforming text
+流式编辑器用于过滤与转换文本。
 
 *example.txt*
 ```bash
@@ -555,7 +555,7 @@ sed 's/ /-/g' example.txt
 Hello-This-is-a-Test-1-2-3-4
 ```
 
-*replace all digits with "d"*
+*替换所有数字为字符 "d"*
 ```bash
 sed 's/[0-9]/d/g' example.txt
 ```
@@ -606,14 +606,14 @@ e
 ```
 
 ### k. `tr`
-Translate or delete characters
+转换或删除字符
 
 *example.txt*
 ```bash
 Hello World Foo Bar Baz!
 ```
 
-*take all lower case letters and make them upper case*
+*把所有小写字母转换成大写形式*
 ```bash
 cat example.txt | tr 'a-z' 'A-Z' 
 ```
@@ -621,7 +621,7 @@ cat example.txt | tr 'a-z' 'A-Z'
 HELLO WORLD FOO BAR BAZ!
 ```
 
-*take all spaces and make them into newlines*
+*把所有空格转换为新行*
 ```bash
 cat example.txt | tr ' ' '\n'
 ```
@@ -634,7 +634,7 @@ Baz!
 ```
 
 ### l. `uniq`
-Report or omit repeated lines
+汇报或删除重复的行
 
 *example.txt*
 ```bash
@@ -648,7 +648,7 @@ d
 c
 ```
 
-*show only unique lines of example.txt (first you need to sort it, otherwise it won't see the overlap)*
+*显示 example.txt 中所有不重复的行 (首先你需要排序，否则部分相同行会被忽略)*
 ```bash
 sort example.txt | uniq
 ```
@@ -659,7 +659,7 @@ c
 d
 ```
 
-*show the unique items for each line, and tell me how many instances it found*
+*显示去重后的所有唯一项，并标注原始文件中该项出现的次数*
 ```bash
 sort example.txt | uniq -c
 ```
@@ -671,16 +671,16 @@ sort example.txt | uniq -c
 ```
 
 ### m. `wc`
-Tells you how many lines, words and characters there are in a file.  
+告知你该文件的行数、词数（译者注：原文此处为 `words` ，对应英文来说，单词间一般以空白符或标点符分隔，一个单词算一个，但对于中文，一个不带空白符与标点符的长句仍算一个）与字节数（译者注：原文此处为 `characters` 应理解为字节数而非字符数）。 
 ```bash
 wc filename
 ```
-Example:
+示例：
 ```bash
 $ wc demo.txt
 7459   15915  398400 demo.txt
 ```
-Where `7459` is lines, `15915` is words and `398400` is characters.
+这里，`7459` 是行数， `15915` 是词数以及 `398400` 是字节数。
 
 ## 1.3. 文件夹操作
 
