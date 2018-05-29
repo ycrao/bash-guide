@@ -955,9 +955,9 @@ str="hello world"
 echo $str   # hello world
 ```
 ## 2.2. 数组
-Like other languages bash has also arrays. An array is variable containing multiple values. There's no maximum limit on the size of array. Array in bash are zero based. The first element is indexed with element 0. There are several ways for creating arrays in bash. Which are given below.
+像其它语言一样 bash 也有数组。数组是一个保存有多个值的变量。数组没有最大长度限制。bash 数组索引是从 0 开始的。在 bash 中有多种方法创建数组，下面会给出。
 
-Examples:
+示例:
 ```bash
 array[0] = val
 array[1] = val
@@ -965,43 +965,43 @@ array[2] = val
 array=([2]=val [0]=val [1]=val)
 array=(val val val)
 ```
-To display a value at specific index use following syntax:
+使用下面语法显示数组特定索引元素的值：
 
 ```bash
-${array[i]}     # where i is the index
+${array[i]}     # i 是数组索引值
 ```
 
-If no index is supplied, array element 0 is assumed. To find out how many values there are in the array use the following syntax:
+如果没有提供数组的索引值，默认会指定为索引为 0 的第一个元素。想找出数组中有多少个元素，使用下面的语法：
 
 ```bash
 ${#array[@]}
 ```
 
-Bash has also support for the ternary conditions. Check some examples below.
+Bash 也支持三元运算符，查看下面示例：
 
 ```bash
-${varname:-word}    # if varname exists and isn't null, return its value; otherwise return word
-${varname:=word}    # if varname exists and isn't null, return its value; otherwise set it word and then return its value
-${varname:+word}    # if varname exists and isn't null, return word; otherwise return null
-${varname:offset:length}    # performs substring expansion. It returns the substring of $varname starting at offset and up to length characters
+${varname:-word}    # 如果 varname 存在而且不为 null，返回它的值，否则返回 word
+${varname:=word}    # 如果 varname 存在而且不为 null，返回它的值，否则把word赋值给它并且返回 word
+${varname:+word}    # 如果 varname 存在而且不为 null，返回 word，否则返回 null
+${varname:offset:length}    # 执行字符串拼接，它返回从 offset 处开始，长度为 length 的 $varname 子字符串
 ```
 
 ## 2.3 字符串替换
 
-Check some of the syntax on how to manipulate strings
+通过下面语法示例学习字符串相关操作
 
 ```bash
-${variable#pattern}         # if the pattern matches the beginning of the variable's value, delete the shortest part that matches and return the rest
-${variable##pattern}        # if the pattern matches the beginning of the variable's value, delete the longest part that matches and return the rest
-${variable%pattern}         # if the pattern matches the end of the variable's value, delete the shortest part that matches and return the rest
-${variable%%pattern}        # if the pattern matches the end of the variable's value, delete the longest part that matches and return the rest
-${variable/pattern/string}  # the longest match to pattern in variable is replaced by string. Only the first match is replaced
-${variable//pattern/string} # the longest match to pattern in variable is replaced by string. All matches are replaced
-${#varname}     # returns the length of the value of the variable as a character string
+${variable#pattern}         # 如果 pattern 匹配变量值的起始部分，删除匹配 pattern 的最短的部分，然后返回剩余的
+${variable##pattern}        # 如果 pattern 匹配变量值的起始部分，删除匹配 pattern 的最长的部分，然后返回剩余的
+${variable%pattern}         # 如果 pattern 匹配变量值的结束部分，删除匹配 pattern 的最短的部分，然后返回剩余的
+${variable%%pattern}        # 如果 pattern 匹配变量值的结束部分，删除匹配 pattern 的最长的部分，然后返回剩余的
+${variable/pattern/string}  # 把变量值中匹配 pattern 的最长的部分替换为 string，只替换第一个匹配的部分
+${variable//pattern/string} # 把变量值中匹配 pattern 的最长的部分替换为 string，进行全局替换
+${#varname}     # 返回变量值作为一个字符串的长度
 ```
 
 ## 2.4. 函数
-As in almost any programming language, you can use functions to group pieces of code in a more logical way or practice the divine art of recursion. Declaring a function is just a matter of writing function my_func { my_code }. Calling a function is just like calling another program, you just write its name.
+就像其它编程语言一样，你可以使用函数（译者注：函数有时也称为方法）以更合乎逻辑的方式来聚合代码片段，或实现递归的神圣艺术。声明一个函数只需要写下 `function my_func { my_code }` 。调用一个函数就像调用一个程序一样，你只需写出它的名字。
 
 ```bash
 function name() {
@@ -1009,7 +1009,7 @@ function name() {
 }
 ```
 
-Example:
+示例:
 ```bash
 #!/bin/bash
 function hello {
@@ -1023,11 +1023,11 @@ function say {
 say "hello world!"
 ```
 
-When you run the above example the `hello` function will output "world!". The above two functions `hello` and `say` are identical. The main difference is function `say`. This function, prints the first argument it receives. Arguments, within functions, are treated in the same manner as arguments given to the script.
+当你运行上面示例中的 `hello` 方法时，它会输出 "world!" 。上面的两个函数 `hello` 和 `say` 是相同的。主要区别是 `say` 方法，这个方法会打印出它接收到的第一个参数。在函数中的参数与脚本中的参数处理方式是一样的。
 
 ## 2.5. 条件语句
 
-The conditional statement in bash is similar to other programming languages. Conditions have many form like the most basic form is `if` expression `then` statement where statement is only executed if expression is true.
+在 bash 中的条件语句类似于其它语言。 条件语句有很多形式，最常见的基本形式是 `if` 表述式 `then` 语句，代表只有表达式为真时，才执行该语句。
 
 ```bash
 if [ expression ]; then
@@ -1037,7 +1037,7 @@ else
 fi
 ```
 
-Sometime if conditions becoming confusing so you can write the same condition using the `case statements`.
+有时候，如果条件比较复杂，你可以使用 `case statements` 来实现相同的条件判断。
 
 ```bash
 case expression in
@@ -1049,40 +1049,40 @@ case expression in
 esac
 ```
 
-Expression Examples:
+表达式示例：
 
 ```bash
-statement1 && statement2  # both statements are true
-statement1 || statement2  # at least one of the statements is true
+statement1 && statement2  # 两个语句都为真
+statement1 || statement2  # 至少一个语句为真
 
-str1=str2       # str1 matches str2
-str1!=str2      # str1 does not match str2
-str1<str2       # str1 is less than str2
-str1>str2       # str1 is greater than str2
--n str1         # str1 is not null (has length greater than 0)
--z str1         # str1 is null (has length 0)
+str1=str2       # str1 匹配 str2
+str1!=str2      # str1 不匹配 str2
+str1<str2       # str1 小于 str2
+str1>str2       # str1 大于 str2
+-n str1         # str1 不是 null (长度大于 0)
+-z str1         # str1 是 null (长度为 0)
 
--a file         # file exists
--d file         # file exists and is a directory
--e file         # file exists; same -a
--f file         # file exists and is a regular file (i.e., not a directory or other special type of file)
--r file         # you have read permission
--s file         # file exists and is not empty
--w file         # you have write permission
--x file         # you have execute permission on file, or directory search permission if it is a directory
--N file         # file was modified since it was last read
--O file         # you own file
--G file         # file's group ID matches yours (or one of yours, if you are in multiple groups)
+-a file         # 文件存在
+-d file         # 文件存在且是目录
+-e file         # 文件存在，跟 -a 一样
+-f file         # 文件存在，而且是常规文件（不是目录或者其它特殊类型的文件）
+-r file         # 拥有读权限
+-s file         # 文件存在且不为空
+-w file         # 拥有写权限
+-x file         # 拥有执行权限，或者如果它是目录，拥有搜索权限
+-N file         # 文件自上次读之后被修改过
+-O file         # 你是文件所有者
+-G file         # 文件的用户组 ID 匹配你的用户组 ID（或之一，如果你处于多用户组下)
 
-file1 -nt file2     # file1 is newer than file2
-file1 -ot file2     # file1 is older than file2
+file1 -nt file2     # file1 比 file2 更新
+file1 -ot file2     # file1 比 file2 更老
 
--lt     # less than
--le     # less than or equal
--eq     # equal
--ge     # greater than or equal
--gt     # greater than
--ne     # not equal
+-lt     # 小于
+-le     # 小于等于
+-eq     # 等于
+-ge     # 大于等于
+-gt     # 大于
+-ne     # 不等于
 ```
 
 ## 2.6. 循环
@@ -1134,7 +1134,7 @@ do
   echo $i
 done
 
-counter = 1
+counter=1
 while [ $counter -le 10 ]
 do
 echo $counter
@@ -1146,7 +1146,7 @@ counter=1
 until [ $counter -gt 10 ]
 do
 echo $counter
-((counter++))
+((counter ++))
 done
 echo "until all done"
 ```
