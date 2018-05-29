@@ -15,8 +15,8 @@
     2.1. [变量](#21-变量)  
     2.2. [数组](#22-数组)
     2.3. [字符串替换](#22-字符串替换)  
-    2.4. [函数Functions](#23-函数)  
-    2.5. [条件](#24-条件)  
+    2.4. [函数](#23-函数)  
+    2.5. [条件语句](#24-条件语句)  
     2.6. [循环](#25-循环)  
   3. [技巧](#3-技巧)  
   4. [调试](#4-调试)  
@@ -82,25 +82,26 @@ $ which php
    <tr>
       <td><a href="#a-cat">cat</a></td>
       <td><a href="#b-chmod">chmod</a></td>
-      <td><a href="#c-cp">cp</a></td>
-      <td><a href="#d-diff">diff</a></td>
-      <td><a href="#e-file">file</a></td>
-      <td><a href="#f-find">find</a></td>
-      <td><a href="#g-gunzip">gunzip</a></td>
-      <td><a href="#h-gzcat">gzcat</a></td>
-      <td><a href="#i-gzip">gzip</a></td>
-      <td><a href="#j-head">head</a></td>
+      <td><a href="#c-chown">chown</a></td>
+      <td><a href="#d-cp">cp</a></td>
+      <td><a href="#e-diff">diff</a></td>
+      <td><a href="#f-file">file</a></td>
+      <td><a href="#g-find">find</a></td>
+      <td><a href="#h-gunzip">gunzip</a></td>
+      <td><a href="#i-gzcat">gzcat</a></td>
+      <td><a href="#j-gzip">gzip</a></td>
+      <td><a href="#k-head">head</a></td>
    </tr>
    <tr>
-      <td><a href="#k-lpq">lpq</a></td>
-      <td><a href="#l-lpr">lpr</a></td>
-      <td><a href="#m-lprm">lprm</a></td>
-      <td><a href="#n-ls">ls</a></td>
-      <td><a href="#o-more">more</a></td>
-      <td><a href="#p-mv">mv</a></td>
-      <td><a href="#q-rm">rm</a></td>
-      <td><a href="#r-tail">tail</a></td>
-      <td><a href="#s-touch">touch</a></td>
+      <td><a href="#l-lpq">lpq</a></td>
+      <td><a href="#m-lpr">lpr</a></td>
+      <td><a href="#n-lprm">lprm</a></td>
+      <td><a href="#o-ls">ls</a></td>
+      <td><a href="#p-more">more</a></td>
+      <td><a href="#q-mv">mv</a></td>
+      <td><a href="#r-rm">rm</a></td>
+      <td><a href="#s-tail">tail</a></td>
+      <td><a href="#t-touch">touch</a></td>
    </tr>
 </table>
 
@@ -122,20 +123,26 @@ cat file1 file2 > newcombinedfile
 chmod -options filename
 ```
 
-### c. `cp`
+### c. `chown`
+The chown command stands for "change owner", and allows you to change the owner of a given file or folder, which can be a user and a group. Basic usage is simple forward first comes the user (owner), and then the group, delimited by a colon.
+```bash
+chown -options user:group filename
+```
+
+### d. `cp`
 把文件从一个位置复制到另一个位置。  
 ```bash
 cp filename1 filename2
 ```
 这里的 `filename1` 是原始文件路径，`filename2` 是目标文件路径。
 
-### d. `diff`
+### e. `diff`
 比较文件并列出他们的不同。  
 ```bash
 diff filename1 filename2
 ```
 
-### e. `file`
+### f. `file`
 侦测文件类型。  
 ```bash
 file filename
@@ -145,7 +152,7 @@ file filename
 $ file index.html
  index.html: HTML document, ASCII text
 ```
-### f. `find`
+### g. `find`
 在特定目录下查找文件。  
 ```bash
 find directory options pattern
@@ -156,31 +163,31 @@ $ find . -name README.md
 $ find /home/user1 -name '*.png'
 ```
 
-### g. `gunzip`
+### h. `gunzip`
 解压缩由 gzip 压缩过的文件。  
 ```bash
 gunzip filename
 ```
 
-### h. `gzcat`
+### i. `gzcat`
 可让你免解压直接查看经 `gzip` 压缩过的文件。  
 ```bash
 gzcat filename
 ```
 
-### i. `gzip`
+### j. `gzip`
 压缩文件。  
 ```bash
 gzip filename
 ```
 
-### j. `head`
+### k. `head`
 输出文件前10行内容。  
 ```bash
 head filename
 ```
 
-### k. `lpq`
+### l. `lpq`
 查看打印队列状态。  
 ```bash
 lpq
@@ -193,19 +200,19 @@ active  adnanad 59      demo                            399360 bytes
 1st     adnanad 60      (stdin)                         0 bytes
 ```
 
-### l. `lpr`
+### m. `lpr`
 打印文件。  
 ```bash
 lpr filename
 ```
 
-### m. `lprm`
+### n. `lprm`
 从打印队列中移除某个任务。  
 ```bash
 lprm jobnumber
 ```
 
-### n. `ls`
+### o. `ls`
 列出文件。 `ls` 拥有诸多选项： `-l` 以列表方式列出文件 （包含文件大小，文件所属用户组，文件权限及其最后更新时间等）； `-a` 列出所有文件，包括隐藏文件。关于这个命令的更多信息请查阅此 [外链](https://ss64.com/bash/ls.html) 。  
 ```bash
 ls option
@@ -223,13 +230,13 @@ drwxr-xr-x  17 adnan  staff     578 Mar 27 23:36 .git
 -rwxr-xr-x   1 adnan  staff    2702 Mar 25 18:08 .gitignore
 </pre>
 
-### o. `more`
+### p. `more`
 展示文件的开头部分（通过敲击空格键移动以及 `q` 键退出）。  
 ```bash
 more filename
 ```
 
-### p. `mv`
+### q. `mv`
 将文件从一个位置移动到另一个位置。  
 ```bash
 mv filename1 filename2
@@ -241,7 +248,7 @@ mv filename1 filename2
 mv old_name new_name
 ```
 
-### q. `rm`
+### r. `rm`
 移除某个文件。对一个目录使用此命令会爆出一个错误。  
 `rm: directory: is a directory`
 要删除一个目录，请传入 `-r` 参数，它将递归性删除该目录下所有内容。可选地你也使用 `-f` 标志位强制删除，也就是不经过任何确定提示等。  
@@ -249,13 +256,13 @@ mv old_name new_name
 rm filename
 ```
 
-### r. `tail`
+### s. `tail`
 输出文件末尾10行内容。使用 `-f` 选项可输出正在被写入文件中的数据。  
 ```bash
 tail filename
 ```
 
-### s. `touch`
+### t. `touch`
 创建或更新你的文件。  
 ```bash
 touch filename
@@ -725,28 +732,27 @@ pwd
       <td><a href="#e-dig">dig</a></td>
       <td><a href="#f-du">du</a></td>
       <td><a href="#g-fg">fg</a></td>
-      <td><a href="#h-finger">finger</a></td>
-      <td><a href="#i-kill">kill</a></td>
-      <td><a href="#j-killall">killall</a></td>
+      <td><a href="#h-finger">finger</a></td>   
+      <td><a href="#i-jobs">jobs</a></td>
+      <td><a href="#j-last">last</a></td>
    </tr>
    <tr>
-      <td><a href="#k-last">last</a></td>
-      <td><a href="#l-man">man</a></td>
-      <td><a href="#m-passwd">passwd</a></td>
-      <td><a href="#n-ping">ping</a></td>
-      <td><a href="#o-ps">ps</a></td>
-      <td><a href="#p-quota">quota</a></td>
-      <td><a href="#q-scp">scp</a></td>
-      <td><a href="#r-ssh">ssh</a></td>
-      <td><a href="#s-top">top</a></td>
-      <td><a href="#t-uname">uname</a></td>
+      <td><a href="#k-man">man</a></td>
+      <td><a href="#l-passwd">passwd</a></td>
+      <td><a href="#m-ping">ping</a></td>
+      <td><a href="#n-ps">ps</a></td>
+      <td><a href="#o-quota">quota</a></td>
+      <td><a href="#p-scp">scp</a></td>
+      <td><a href="#q-ssh">ssh</a></td>
+      <td><a href="#r-top">top</a></td>
+      <td><a href="#s-uname">uname</a></td>
+      <td><a href="#t-uptime">uptime</a></td>
    </tr>
    <tr>
-      <td><a href="#u-uptime">uptime</a></td>
-      <td><a href="#v-w">w</a></td>
-      <td><a href="#w-wget">wget</a></td>
-      <td><a href="#x-whoami">whoami</a></td>
-      <td><a href="#y-whois">whois</a></td>
+      <td><a href="#u-w">w</a></td>
+      <td><a href="#v-wget">wget</a></td>
+      <td><a href="#w-whoami">whoami</a></td>
+      <td><a href="#x-whois">whois</a></td>
    </tr>
 </table>
 
@@ -792,52 +798,43 @@ du -sh pictures
 finger username
 ```
 
-### i. `kill`
-根据给定的进程 ID 杀死（结束）该进程 
-```bash
-kill PID
-```
+### i. jobs
+Lists the jobs running in the background, giving the job number.
 
-### j. `killall`
-杀死以此为名字的所有进程。 
-```bash
-killall processname
-```
-
-### k. `last`
+### j. `last`
 列出指定用户最近登录记录。
 ```bash
 last yourUsername
 ```
 
-### l. `man`
+### k. `man`
 显示特定命令帮助手册。
 ```bash
 man command
 ```
 
-### m. `passwd`
+### l. `passwd`
 让当前登录的用户修改他的密码。
 
-### n. `ping`
+### m. `ping`
 ping 某个主机并输出结果。  
 ```bash
 ping host
 ```
 
-### o. `ps`
+### n. `ps`
 列出用户进程。
 ```bash
 ps -u yourusername
 ```
 
-### p. `quota`
+### o. `quota`
 显示你的磁盘配额情况。  
 ```bash
 quota -v
 ```
 
-### q. `scp`
+### p. `scp`
 在本地主机与远程主机之间或两个远程主机之间传输文件。
 
 *从本地主机复制文件到远程主机*
@@ -854,7 +851,7 @@ scp -r user@host:directory/source_folder farget_folder
 scp -P port user@host:directory/source_file target_file
 ```
 
-### r. `ssh`
+### q. `ssh`
 ssh （ssh 客户端）是一个用来登录到远程机器并在远程机器上执行命令的程序。
 ```bash
 ssh user@host
@@ -864,34 +861,73 @@ ssh user@host
 ssh -p port user@host
 ```
 
-### s. `top`
+### r. `top`
 显示你当前活跃的进程。
 
-### t. `uname`
+### s. `uname`
 显示内核信息。
 ```bash
 uname -a
 ```
 
-### u. `uptime`
+### t. `uptime`
 显示当前运行时间（译者注：即从机器上一次开机算起，到现在的在线待机时间）。
 
-### v. `w`
+### u. `w`
 显示当前在线用户。
 
-### w. `wget`
+### v. `wget`
 下载文件。
 ```bash
 wget file
 ```
 
-### x. `whoami`
+### w. `whoami`
 返回当前登录用户的名字。
 
-### y. `whois`
+### x. `whois`
 获取某个域名的 whois 信息。  
 ```bash
 whois domain
+```
+
+## 1.5. 进程监控操作
+
+<table>
+   <tr>
+      <td><a href="#a-kill">kill</a></td>
+      <td><a href="#b-killall">killall</a></td>
+      <td><a href="#c-&">&amp;</a></td>
+      <td><a href="#d-nohup">nohup</a></td>
+   </tr>
+</table>
+
+### a. `kill`
+根据给定的进程 ID 杀死（结束）该进程 
+```bash
+kill PID
+```
+
+### b. `killall`
+杀死以此为名字的所有进程。 
+```bash
+killall processname
+```
+
+### c. &
+The `&` symbol instructs the command to run as a background process in a subshell.
+```bash
+command &
+```
+
+### d. `nohup`
+nohup stands for "No Hang Up". This allows to run command/process or shell script that can continue running in the background after you log out from a shell.
+```bash
+nohup command
+```
+Combine it with `&` to create background processes 
+```bash
+nohup command &
 ```
 
 # 2. 基础 Shell 编程
