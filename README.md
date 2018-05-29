@@ -13,7 +13,7 @@
     1.5. [进程监控操作](#15-进程监控操作)
   2. [基础Shell编程](#2-基础-shell-编程)  
     2.1. [变量](#21-变量)  
-    2.2. [数组](#22-数组)
+    2.2. [数组](#22-数组)  
     2.3. [字符串替换](#22-字符串替换)  
     2.4. [函数](#23-函数)  
     2.5. [条件语句](#24-条件语句)  
@@ -118,13 +118,13 @@ cat file1 file2 > newcombinedfile
 ```
 
 ### b. `chmod`
-允许你改变文件读、写和可执行等权限。  
+chmod 是 "change mode" (改变模式）的意思，它允许你改变文件读、写和可执行等权限。 关于此命令的详细信息请参考此[链接](https://ss64.com/bash/chmod.html)。
 ```bash
 chmod -options filename
 ```
 
 ### c. `chown`
-The chown command stands for "change owner", and allows you to change the owner of a given file or folder, which can be a user and a group. Basic usage is simple forward first comes the user (owner), and then the group, delimited by a colon.
+chown 是 "change owner" （更改所有者）的意思, 它允许你改变一个文件或文件夹的所有者，所有者可以是个用户或用户组。常见的用法是使用冒号来分隔，前面是用户，后面接着用户组。
 ```bash
 chown -options user:group filename
 ```
@@ -799,7 +799,7 @@ finger username
 ```
 
 ### i. jobs
-Lists the jobs running in the background, giving the job number.
+列出后台正在运行的任务，并给出任务号。
 
 ### j. `last`
 列出指定用户最近登录记录。
@@ -915,17 +915,17 @@ killall processname
 ```
 
 ### c. &
-The `&` symbol instructs the command to run as a background process in a subshell.
+`&` 标志可以使命令作为后台进程运行在 subshell 中。
 ```bash
 command &
 ```
 
 ### d. `nohup`
-nohup stands for "No Hang Up". This allows to run command/process or shell script that can continue running in the background after you log out from a shell.
+nohup 代表 `No Hang Up` （不要挂起）的含义。它允许其它命令、进程或 shell 脚本在你终端登出之后继续在后台运行。
 ```bash
 nohup command
 ```
-Combine it with `&` to create background processes 
+把它和 `&` 结合可以创建后台进程。
 ```bash
 nohup command &
 ```
