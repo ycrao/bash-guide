@@ -545,9 +545,9 @@ nl -s". " example.txt
 *example.txt*
 ```bash
 Hello This is a Test 1 2 3 4
-``` 
+```
 
-*replace all spaces with hyphens*
+*替换所有空格为连字符*
 ```bash
 sed 's/ /-/g' example.txt
 ```
@@ -751,145 +751,145 @@ pwd
 </table>
 
 ### a. `bg`
-Lists stopped or background jobs; resume a stopped job in the background.
+列出所有被停止或后台运行的任务，或恢复一个已停止的任务到后台运行。
 
 ### b. `cal`
-Shows the month's calendar.
+显示当前月月历。
 
 ### c. `date`
-Shows the current date and time.
+显示当前日期与实际。
 
 ### d. `df`
-Shows disk usage.
+显示磁盘使用情况。
 
 ### e. `dig`
-Gets DNS information for domain.  
+获取域名 DNS 解析相关信息。
 ```bash
 dig domain
 ```
 
 ### f. `du`
-Shows the disk usage of files or directories. For more information on this command check this [link](http://www.linfo.org/du.html)
+显示文件或目录的磁盘使用情况。关于此命令的更新信息，请查阅此[外链](http://www.linfo.org/du.html)。
 ```bash
 du [option] [filename|directory]
 ```
-Options:
-- `-h` (human readable) Displays output it in kilobytes (K), megabytes (M) and gigabytes (G).
-- `-s` (supress or summarize) Outputs total disk space of a directory and supresses reports for subdirectories. 
+选项:
+- `-h` (人类可读的) 把结果以 K、M、G（译者注：`K/M/G` 为磁盘占用空间大小的单位，`1G = 1024M` , `1M = 1024K` , `1K = 1024B` ，`1B = 8bit` ，其中 `B` 表示字节，`bit` 表示位）为单位输出。
+- `-s` (压缩或总结) 输出该目录总的磁盘空间及其子目录总结性的报告。
 
-Example:
+示例:
 ```bash
 du -sh pictures
 1.4M pictures
 ```
 
 ### g. `fg`
-Brings the most recent job in the foreground.
+将前台最近运行的任务列出来。
 
 ### h. `finger`
-Displays information about user.  
+显示用户相关信息。  
 ```bash
 finger username
 ```
 
 ### i. `kill`
-Kills (ends) the processes with the ID you gave.  
+根据给定的进程 ID 杀死（结束）该进程 
 ```bash
 kill PID
 ```
 
 ### j. `killall`
-Kill all processes with the name.  
+杀死以此为名字的所有进程。 
 ```bash
 killall processname
 ```
 
 ### k. `last`
-Lists your last logins of specified user.  
+列出指定用户最近登录记录。
 ```bash
 last yourUsername
 ```
 
 ### l. `man`
-Shows the manual for specified command.  
+显示特定命令帮助手册。
 ```bash
 man command
 ```
 
 ### m. `passwd`
-Allows the current logged user to change his password.
+让当前登录的用户修改他的密码。
 
 ### n. `ping`
-Pings host and outputs results.  
+ping 某个主机并输出结果。  
 ```bash
 ping host
 ```
 
 ### o. `ps`
-Lists your processes.  
+列出用户进程。
 ```bash
 ps -u yourusername
 ```
 
 ### p. `quota`
-Shows what your disk quota is.  
+显示你的磁盘配额情况。  
 ```bash
 quota -v
 ```
 
 ### q. `scp`
-Transfer files between a local host and a remote host or between two remote hosts.
+在本地主机与远程主机之间或两个远程主机之间传输文件。
 
-*copy from local host to remote host*
+*从本地主机复制文件到远程主机*
 ```bash
 scp source_file user@host:directory/target_file
 ```
-*copy from remote host to local host*
+*从远程主机复制文件到本地主机*
 ```bash
 scp user@host:directory/source_file target_file
 scp -r user@host:directory/source_folder farget_folder
 ```
-This command also accepts an option `-P` that can be used to connect to specific port.  
+此命令也可接受 `-P` 选项，用来连接到特定的端口。
 ```bash
 scp -P port user@host:directory/source_file target_file
 ```
 
 ### r. `ssh`
-ssh (SSH client) is a program for logging into and executing commands on a remote machine.  
+ssh （ssh 客户端）是一个用来登录到远程机器并在远程机器上执行命令的程序。
 ```bash
 ssh user@host
 ```
-This command also accepts an option `-p` that can be used to connect to specific port.  
+此命令也可接受 `-P` 选项参数，用来连接到特定的端口。
 ```bash
 ssh -p port user@host
 ```
 
 ### s. `top`
-Displays your currently active processes.
+显示你当前活跃的进程。
 
 ### t. `uname`
-Shows kernel information.  
+显示内核信息。
 ```bash
 uname -a
 ```
 
 ### u. `uptime`
-Shows current uptime.
+显示当前运行时间（译者注：即从机器上一次开机算起，到现在的在线待机时间）。
 
 ### v. `w`
-Displays who is online.
+显示当前在线用户。
 
 ### w. `wget`
-Downloads file.  
+下载文件。
 ```bash
 wget file
 ```
 
 ### x. `whoami`
-Return current logged in username.
+返回当前登录用户的名字。
 
 ### y. `whois`
-Gets whois information for domain.  
+获取某个域名的 whois 信息。  
 ```bash
 whois domain
 ```
