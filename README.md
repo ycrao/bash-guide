@@ -14,10 +14,10 @@
   2. [基础Shell编程](#2-基础-shell-编程)  
     2.1. [变量](#21-变量)  
     2.2. [数组](#22-数组)  
-    2.3. [字符串替换](#22-字符串替换)  
-    2.4. [函数](#23-函数)  
-    2.5. [条件语句](#24-条件语句)  
-    2.6. [循环](#25-循环)  
+    2.3. [字符串替换](#23-字符串替换)  
+    2.4. [函数](#24-函数)  
+    2.5. [条件语句](#25-条件语句)  
+    2.6. [循环](#26-循环)  
   3. [技巧](#3-技巧)  
   4. [调试](#4-调试)  
   
@@ -933,7 +933,7 @@ nohup command &
 # 2. 基础 Shell 编程
 
 
-The first line that you will write in bash script files is called `shebang`. This line in any script determines the script's ability to be executed like a standalone executable without typing sh, bash, python, php etc beforehand in the terminal.
+在 bash 脚本文件的首行被称为 `shebang` 。这一行决定了脚本可以像一个独立的可执行文件，而不用在终端之前输入 sh 、bash 、python 以及 php 等命令。
 
 ```bash
 #!/bin/bash
@@ -941,20 +941,20 @@ The first line that you will write in bash script files is called `shebang`. Thi
 
 ## 2.1. 变量
 
-Creating variables in bash is similar to other languages. There are no data types. A variable in bash can contain a number, a character, a string of characters, etc. You have no need to declare a variable, just assigning a value to its reference will create it.
+在 bash 中创建变量跟其它语言相似。没有变量类型一说，bash 变量可以是一个数字、一个字符或一个字符串等。同时你也无需提前申明，给变量赋值就会创建它。
 
-Example:
+示例:
 ```bash
 str="hello world"
 ```
 
-The above line creates a variable `str` and assigns "hello world" to it. The value of variable is retrieved by putting the `$` in the beginning of variable name.
+上面一行创建一个叫 str 的变量，并将 "hello world" 赋值给它了。通过在变量名前加 `$` 可以取得该变量的值。
 
-Example:
+示例:
 ```bash
 echo $str   # hello world
 ```
-
+## 2.2. 数组
 Like other languages bash has also arrays. An array is variable containing multiple values. There's no maximum limit on the size of array. Array in bash are zero based. The first element is indexed with element 0. There are several ways for creating arrays in bash. Which are given below.
 
 Examples:
@@ -986,7 +986,7 @@ ${varname:+word}    # if varname exists and isn't null, return word; otherwise r
 ${varname:offset:length}    # performs substring expansion. It returns the substring of $varname starting at offset and up to length characters
 ```
 
-## 2.2 字符串替换
+## 2.3 字符串替换
 
 Check some of the syntax on how to manipulate strings
 
@@ -1000,11 +1000,11 @@ ${variable//pattern/string} # the longest match to pattern in variable is replac
 ${#varname}     # returns the length of the value of the variable as a character string
 ```
 
-## 2.3. 函数
+## 2.4. 函数
 As in almost any programming language, you can use functions to group pieces of code in a more logical way or practice the divine art of recursion. Declaring a function is just a matter of writing function my_func { my_code }. Calling a function is just like calling another program, you just write its name.
 
 ```bash
-functname() {
+function name() {
     shell commands
 }
 ```
@@ -1025,12 +1025,12 @@ say "hello world!"
 
 When you run the above example the `hello` function will output "world!". The above two functions `hello` and `say` are identical. The main difference is function `say`. This function, prints the first argument it receives. Arguments, within functions, are treated in the same manner as arguments given to the script.
 
-## 2.4. 条件
+## 2.5. 条件语句
 
 The conditional statement in bash is similar to other programming languages. Conditions have many form like the most basic form is `if` expression `then` statement where statement is only executed if expression is true.
 
 ```bash
-if [expression]; then
+if [ expression ]; then
     will execute only if expression is true
 else
     will execute if expression is false
@@ -1053,7 +1053,7 @@ Expression Examples:
 
 ```bash
 statement1 && statement2  # both statements are true
-statement1 || statement2  # one of the statement is true
+statement1 || statement2  # at least one of the statements is true
 
 str1=str2       # str1 matches str2
 str1!=str2      # str1 does not match str2
@@ -1068,7 +1068,7 @@ str1>str2       # str1 is greater than str2
 -f file         # file exists and is a regular file (i.e., not a directory or other special type of file)
 -r file         # you have read permission
 -s file         # file exists and is not empty
--w file         # your have write permission
+-w file         # you have write permission
 -x file         # you have execute permission on file, or directory search permission if it is a directory
 -N file         # file was modified since it was last read
 -O file         # you own file
@@ -1085,17 +1085,15 @@ file1 -ot file2     # file1 is older than file2
 -ne     # not equal
 ```
 
-## 2.5. 循环
+## 2.6. 循环
 
-There are three types of loops in bash. `for`, `while` and `until`.
+在 bash 中有三种循环类型： `for` 、 `while` 以及 `until` 。
 
-Different `for` Syntax:
+不同的 `for` 语法：
+
+> 译者注：修正原文的中错误的示例，请参考此 [issues](https://github.com/Idnan/bash-guide/issues/29) 。
+
 ```bash
-for x := 1 to 10 do
-begin
-  statements
-end
-
 for name [in list]
 do
   statements that can use $name
@@ -1107,18 +1105,50 @@ do
 done
 ```
 
-`while` Syntax:
+`while` 语法:
 ```bash
 while condition; do
   statements
 done
 ```
 
-`until` Syntax:
+`until` 语法:
 ```bash
 until condition; do
   statements
 done
+```
+
+> 译者注：下面示例代码为译者追加的。
+
+循环相关代码示例：
+
+```bash
+for x in {1..10}
+do
+  echo $x
+done
+
+for ((i = 0; i <= 10; i ++)) 
+do
+  echo $i
+done
+
+counter = 1
+while [ $counter -le 10 ]
+do
+echo $counter
+((counter ++))
+done
+echo "while all done"
+
+counter=1
+until [ $counter -gt 10 ]
+do
+echo $counter
+((counter++))
+done
+echo "until all done"
 ```
 
 # 3. 技巧
