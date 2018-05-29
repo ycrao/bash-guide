@@ -1155,7 +1155,7 @@ echo "until all done"
 
 ## 设置别名
 使用下面命令 `nano ~/.bash_profile` （译者注：当然你也可使用 `vi/vim` 工具，前提你已经安装过该软件包）打开 `bash_profile`  
-> alias dockerlogin='ssh www-data@adnan.local -p2222'  # add your alias in .bash_profile
+> alias dockerlogin='ssh www-data@adnan.local -p2222'  # 在 .bash_profile 文件中增加你的别名
 
 ## 快速跳转到指定目录
 nano ~/.bashrc
